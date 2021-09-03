@@ -21,6 +21,7 @@ function SingleBlog({id}) {
         }
 
         async function fetchPost() {
+            // eslint-disable-next-line
             axios.get(baseUrl + `/${id}`)
             .then(function(response) {
                 setPost(response.data);
@@ -29,6 +30,7 @@ function SingleBlog({id}) {
         }
 
         async function fetchComments() {
+            // eslint-disable-next-line
             axios.get(baseUrl + `/${id}/comments`)
             .then(function(response) {
                 setComments(response.data);
@@ -39,7 +41,7 @@ function SingleBlog({id}) {
             fetchPost();
             fetchComments();
         }, 1000);
-    }, [])
+    }, [id])
 
     return (
         <div>

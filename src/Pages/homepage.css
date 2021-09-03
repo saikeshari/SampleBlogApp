@@ -1,0 +1,21 @@
+.bannerText{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.bannerText h1{
+    font-size: 3rem !important;
+}
+
+.postCard{
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.loading{
+    width: 4rem !important;
+    height: 4rem !important;
+    position: absolute;
+    top: 48%;
+    left: 48%;
+}

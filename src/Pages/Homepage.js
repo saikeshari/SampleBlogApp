@@ -1,11 +1,18 @@
-import axios from 'axios';
 import React, {useState,useEffect} from 'react';
+import axios from 'axios';
 import { baseUrl } from '../baseUrl';
 import './homepage.css';
 import {Card, Spinner, Row, Col} from 'react-bootstrap';
+import { useHistory } from "react-router-dom";
 
 function Homepage() {
     const [posts, setPosts] = useState([]);
+    const navigate = useHistory();
+
+    const gotoBlog = (index) => {
+        navigate.push(`/blog/${index}`);
+      }
+
     useEffect(() => {
         async function fetchPosts() {
             axios.get(baseUrl)
@@ -29,17 +36,11 @@ function Homepage() {
             <span className="visually-hidden">Loading...</span>
             </Spinner>}
             </div>
-            {/* <div>
-            <Spinner className="loading" size="lg" animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
-            </Spinner>
-            </div> */}
-            {/* {posts ? <>{posts}</>:<>Hello</>} */}
             <Row>
             {posts.length !==0 ? <>{posts.map((post) => {
                 return(
                     <Col md={6}>
-                    <Card className="postCard">
+                    <Card onClick={() => gotoBlog(post.id)} className="postCard">
                         <Card.Body>
                                 {post.title}
                         </Card.Body>
